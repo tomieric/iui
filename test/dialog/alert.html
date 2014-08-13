@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        .artdialog-alert{
+            border-width: 1px!important;
+        }
+    </style>
+</head>
+<body>
+   <h1>alert.msg</h1>
+   <button id="alert">alert</button>
+   <h2>alert.loading</h2>
+   <button id="loading">loading</button>
+   <h2>alert.success</h2>
+   <button id="success">success</button>
+   <h2>alert.error</h2>
+   <button id="error">error</button>
+   <h2>alert.warning</h2>
+   <button id="warning">warning</button>
+   <h2>alert.confirm</h2>
+   <button id="confirm">confirm</button>
+   <h2>alert.prompt</h2>
+   <button id="prompt">prompt</button>
+<script type="text/javascript" src="../../src/vendor/require.js"></script>
+<script>
+    require.config({
+        baseUrl: '../../src',
+        paths: {
+            'jquery': 'vendor/jquery'
+        }
+    });
+    /* 引入dialog */
+    require(['jquery','artDialog/alert'], function($, Dialog){
+        //console.log(dialog);
+        /*var d = Dialog.loading('正在加载中...');
+        setTimeout(function(){
+            d.close();
+        }, 3000);*/
+        Dialog.notify('哈哈~', 1500);
+        //Dialog.msg('哈哈~');
+
+
+        /* 提示 */
+        $("#alert").on("click", function(){
+            Dialog.msg('alert Dailog');
+        });
+
+        /* 加载 */
+        var loading  = null;
+        $("#loading").on("click", function(){
+            if(loading){
+                loading.close();
+                loading = null;
+                return;
+            }
+            loading = Dialog.loading('加载中...');
+        });
+
+        /* 成功 */
+        $("#success").on("click", function(){
+            Dialog.success('操作成功');
+        });
+
+        /* 失败 */
+        $("#error").on("click", function(){
+            Dialog.error('删除失败');
+        });
+
+        /* 警告 */
+        $("#warning").on("click", function(){
+            Dialog.warning('删除后不能恢复数据！');
+        });
+
+        /* 输入 */
+        $("#prompt").on("click", function(){
+            Dialog.prompt('请输入密码', function(res, obj){
+                if($.trim(res) === ""){
+                    alert('密码不能为空');
+                    obj.focus();
+                    return false;
+                }else{
+                    alert('您输入的密码是' + res);
+                }
+            });
+        });
+
+        /* 提示 */
+        $("#confirm").on("click", function(){
+//            Dialog.confirm('确定删除?');
+            /*Dialog.confirm('确定删除?', function(){
+                alert('确定');
+            });*/
+            /*Dialog.confirm('确定删除?', function(){
+                alert('确定');
+                return false;
+            });*/
+            /*Dialog.confirm('确定删除?', function(){
+                alert('确定');
+            }, function(){
+                alert('取消');
+            });*/
+            Dialog.confirm('提醒：', '确定删除确定删除确定删除确定删除', function(){
+                alert('确定');
+            }, function(){
+                alert('不能取消，只能确定');
+                return false;
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+    "name": "iui",
+    "description": "The web components for ipiao",
+    "version": "1.0.0",
+    "homepage": "http://www.ipiao.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tomieric/iui.git"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "grunt": "~"
+    },
+    "readmeFileName": "README.md"
+}

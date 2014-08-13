@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>弹出框</title>
+    <style type="text/css">
+        .code{
+            margin-bottom: 10px;
+            padding: 1em;
+            background: #e7e7e7;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript" src="../../src/vendor/require.js"></script>
+<script>
+    require.config({
+        baseUrl: '../../src',
+        paths: {
+            'jquery': 'vendor/jquery'
+        }
+    });
+    /* 引入dialog */
+    require(['artDialog/dialog'], function(dialog){
+        //console.log(dialog);
+    });
+</script>
+<!--普通对话框-->
+<h2>1.普通对话框</h2>
+<div class="code">
+    <pre>
+        require(['artDialog/dialog', 'jquery'], function(dialog, $){
+           var d = dialog({
+               title: '欢迎',
+               content: '普通对话框'
+           });
+           $("#btn1").on("click", function(){
+               d.show();
+           });
+    });
+    </pre>
+</div>
+<button type="button" id="btn1">普通对话框</button>
+<script>
+    require(['artDialog/dialog', 'jquery'], function(dialog, $){
+           var d = dialog({
+               title: '欢迎',
+               content: '普通对话框'
+           });
+           $("#btn1").on("click", function(){
+               d.show();
+           });
+    });
+</script>
+<!--模拟对话框-->
+<h2>2.模拟对话框</h2>
+<div class="code">
+    <pre>
+        require(['artDialog/dialog', 'jquery'], function(dialog, $){
+            var d = dialog({
+                title: '请输入',
+                content: '&lt;input type="text" autofocus /&gt;'
+            });
+            $("#btn2").on("click", function(){
+                d.show();
+            });
+        });
+    </pre>
+</div>
+<button type="button" id="btn2">模拟对话框</button>
+<script>
+    require(['artDialog/dialog', 'jquery'], function(dialog, $){
+        var d = dialog({
+            title: '请输入',
+            content: '<input type="text" autofocus />'
+        });
+        $("#btn2").on("click", function(){
+            d.show();
+        });
+    });
+</script>
+<!--气泡浮层-->
+<h2 id="quickClose">3.气泡浮层</h2>
+<div class="code">
+    <pre>
+        require(['artDialog/dialog', 'jquery'], function(dialog, $){
+            var d = dialog({
+                quickClose: true,// 点击空白处快速关闭
+                content: '气泡浮层'
+            });
+            $("#btn3").on("click", function(){
+                d.show($("#quickClose")[0]);
+            });
+        });
+    </pre>
+</div>
+<button type="button" id="btn3">气泡浮层</button>
+<script>
+    require(['artDialog/dialog', 'jquery'], function(dialog, $){
+        var d = dialog({
+            quickClose: true,// 点击空白处快速关闭
+            content: '气泡浮层'
+        });
+        $("#btn3").on("click", function(){
+            d.show($("#quickClose")[0]);
+        });
+    });
+</script>
+<!--添加按钮-->
+<h2>4.添加按钮</h2>
+<div class="code">
+    <pre>
+        require(['artDialog/dialog', 'jquery'], function(dialog, $){
+            var d = dialog({
+                quickClose: true,// 点击空白处快速关闭
+                content: '气泡浮层'
+            });
+            $("#btn3").on("click", function(){
+                d.show($("#quickClose")[0]);
+            });
+        });
+    </pre>
+</div>
+<button type="button" id="btn4">添加按钮</button>
+<script>
+    require(['artDialog/dialog', 'jquery'], function(dialog, $){
+        var d = dialog({
+            title: "提示",
+            content: '按钮回调函数返回 false 则不许关闭',
+            okVal: '确定',
+            ok: function(){
+                this.title('确定中...');
+                return false;
+            },
+            cancelVal: '取消',
+            cancel: function(){}
+        });
+        $("#btn4").on("click", function(){
+            d.show();
+        });
+    });
+</script>
+<!--给对话框左下脚添加复选框-->
+<h2>5.给对话框左下脚添加复选框</h2>
+<div class="code">
+    <pre>
+        require(['artDialog/dialog', 'jquery'], function(dialog, $){
+        var d = dialog({
+            title: "给对话框左下脚添加复选框",
+            content: "给对话框左下脚添加复选框",
+            ok: function(){},
+            statusbar: '&lt;label&gt;&lt;input type="checkbox"/&gt;不再提醒&lt;/label&gt;'
+        });
+        $("#btn5").on("click", function(){
+            d.show();
+        });
+    });
+    </pre>
+</div>
+<button type="button" id="btn5">给对话框左下脚添加复选框</button>
+<script>
+    require(['artDialog/dialog', 'jquery'], function(dialog, $){
+        var d = dialog({
+            title: "给对话框左下脚添加复选框",
+            content: "给对话框左下脚添加复选框",
+            ok: function(){},
+            statusbar: '<label><input type="checkbox"/>不再提醒</label>'
+        });
+        $("#btn5").on("click", function(){
+            d.show();
+        });
+    });
+</script>
+<!--创建 iframe 内容-->
+<h2>6.创建 iframe 内容</h2>
+<div class="code">
+    <pre>
+        require(['artDialog/dialog-plus', 'jquery'], function(dialog, $){
+            var d;
+            $("#btn6").on("click", function(){
+                d= dialog({
+                    title: "iframe",
+                    url: "http://baidu.com",
+                    width: '1024',
+                    height: '600',
+                    fixed: true
+                });
+                d.show();
+            });
+        });
+    </pre>
+</div>
+<button type="button" id="btn6">创建 iframe 内容</button>
+<script>
+    require(['artDialog/dialog-plus', 'jquery'], function(dialog, $){
+        var d;
+        $("#btn6").on("click", function(){
+            d= dialog({
+                title: "iframe",
+                url: "http://baidu.com",
+                width: '1024',
+                height: '600',
+                fixed: true
+            });
+            d.show();
+        });
+    });
+</script>
+
+<p>详情见<a href="http://aui.github.io/artDialog/doc/index.html">artDialog参考文档</a></p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

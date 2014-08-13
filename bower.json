@@ -1,0 +1,14 @@
+{
+    "name": "iui-bower",
+    "version": "1.0.0",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "jquery": "https://github.com/tomieric/iui.git"
+    }
+}
