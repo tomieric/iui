@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="activity.css">
+
+	<style>
+		#title{
+			position: absolute;
+			top: 30%;
+			left: 30%;
+			color: orange;
+
+			-webkit-animation-duration: 3s;
+			-webkit-animation-delay: 1s;
+		}
+  	</style>
+</head>
+<body>
+	<h1 id="logo">星美国际电影影城</h1>
+  		<script src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js"></script>
+  		<script>
+  			(function($){
+  				$("#title").addClass("animated flip")
+  							.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+  								$(this).removeClass();
+  							});
+  			})(jQuery);
+  		</script>
+</body>
+</html>
