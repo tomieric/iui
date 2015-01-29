@@ -1,4 +1,4 @@
-@import '../../../../less/animate.less';
+@import '../../../src/less/base/animate.less';
 
 .animated{
 	.animated;
@@ -7,8 +7,22 @@
 .bounceOutLeft{
 	.bounceOutLeft;
 }
-.flip{
-	.flip;
+.title.flip{
+    -webkit-animation-duration: 3s;
+    -webkit-animation-delay: .2s;
+//  -webkit-animation-iteration-count: infinite;
+    
+    animation-duration: 3s;
+    animation-delay: .2s;
+//  animation-iteration-count: infinite;
+    
+    &:hover{
+        .animated;
+        .rotateIn;
+    }
+}
+.hinge{
+    .hinge;
 }
 
 #logo{
